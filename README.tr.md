@@ -130,7 +130,7 @@ MultipeerConnectivity oturumu Apple'ın bağlantı şifrelemesini (`.required`),
 Zorunlu çalışma zamanı bağımlılıkları Apache-2.0 ile uyumlu izin verici lisanslardadır: `@capacitor/core` ve Capacitor iOS/Android
 (MIT), `androidx.appcompat` / `androidx.core` (Apache-2.0), Apple sistem çerçeveleri. Tek kapalı kaynak bileşen
 `play-services-nearby` **isteğe bağlıdır ve varsayılan derlemede yoktur**. Geliştirme araçları: TypeScript (Apache-2.0), Vitest,
-tsx, @types/node (MIT), JUnit 4 (EPL-1.0, yalnız test). Tam tablo İngilizce README'de.
+tsx, @types/node, ESLint, typescript-eslint (MIT), JUnit 4 (EPL-1.0, yalnız test). Tam tablo İngilizce README'de.
 
 ## Katkı, güvenlik, davranış kuralları
 

@@ -5,9 +5,13 @@ versioning: [SemVer](https://semver.org/).
 
 ## [Unreleased]
 
+### Added
+- Static analysis: ESLint with `typescript-eslint` (`npm run lint`, run in CI) and a GitHub CodeQL workflow for JavaScript/TypeScript
+  (push, pull request, weekly).
+
 ### Security
 - Dev/test tooling upgraded to releases without known vulnerabilities: Vitest 2.1.8 → 4.1.12 (fixes CVE-2025-24964 and the
-  vulnerable vite / esbuild / tinypool chain), tsx 4.19.2 → 4.23.15.
+  vulnerable vite / esbuild / tinypool chain), tsx 4.19.2 → 4.23.15; `minimatch` pinned to 11.0.3 via `overrides` (ESLint toolchain).
   `npm audit` reports 0 vulnerabilities. These packages are not part of the published plugin.
 
 ## [0.1.0] — 2026-11-12
