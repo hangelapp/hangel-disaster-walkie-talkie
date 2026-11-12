@@ -1,0 +1,30 @@
+# SPDX-License-Identifier: Apache-2.0
+name: ci
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  typescript:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm test
+  ios:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - run: xcodebuild -scheme HangelDisasterWalkieTalkie -destination 'generic/platform=iOS Simulator' build
+      - run: npm run verify:cross
+      - run: swift scripts/cross-verify/vektor-dogrula.swift

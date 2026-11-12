@@ -1,0 +1,64 @@
+{
+  "name": "hangel-disaster-walkie-talkie",
+  "version": "0.1.0",
+  "description": "Offline disaster walkie-talkie for Capacitor apps: push-to-talk voice, short text and help calls between nearby phones over Bluetooth LE / peer-to-peer Wi-Fi, with store-and-forward relaying. No internet or server required.",
+  "license": "Apache-2.0",
+  "author": "Uluslararası Sosyal Fayda Derneği (Social Business Global) <info@socialbusinessglobal.org>",
+  "homepage": "https://github.com/hangelapp/hangel-disaster-walkie-talkie#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hangelapp/hangel-disaster-walkie-talkie.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hangelapp/hangel-disaster-walkie-talkie/issues"
+  },
+  "keywords": [
+    "capacitor",
+    "plugin",
+    "disaster-response",
+    "offline",
+    "bluetooth",
+    "mesh",
+    "walkie-talkie",
+    "humanitarian"
+  ],
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/",
+    "ios/Sources/",
+    "android/src/",
+    "android/build.gradle",
+    "Package.swift",
+    "HangelDisasterWalkieTalkie.podspec",
+    "LICENSE",
+    "NOTICE"
+  ],
+  "capacitor": {
+    "ios": {
+      "src": "ios"
+    },
+    "android": {
+      "src": "android"
+    }
+  },
+  "scripts": {
+    "prepare": "tsc -p tsconfig.json",
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.test.json --noEmit",
+    "test": "vitest run",
+    "verify:ios": "xcodebuild -scheme HangelDisasterWalkieTalkie -destination 'generic/platform=iOS Simulator' build",
+    "verify:cross": "bash scripts/cross-verify/capraz-dogrula.sh"
+  },
+  "peerDependencies": {
+    "@capacitor/core": ">=8.0.0"
+  },
+  "devDependencies": {
+    "@capacitor/core": "8.3.0",
+    "@types/node": "22.10.2",
+    "tsx": "4.19.2",
+    "typescript": "5.7.2",
+    "vitest": "2.1.8"
+  }
+}

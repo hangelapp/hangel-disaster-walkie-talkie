@@ -1,0 +1,72 @@
+// SPDX-License-Identifier: Apache-2.0
+// Copyright 2026 Uluslararası Sosyal Fayda Derneği (Social Business Global)
+//
+// Android library module of the Capacitor plugin. NOT build-verified by the maintainers' release machine (no Android SDK
+// there) — see README "Build status". Optional proprietary transport: set `walkieTalkieNearby=true` in the app's
+// android/gradle.properties to add Google Play services Nearby Connections (Android ↔ Android over Wi-Fi). Default: off,
+// i.e. only Android (AOSP) Bluetooth LE APIs are used.
+
+ext {
+    capacitorVersion = System.getenv('CAPACITOR_VERSION')
+    junitVersion = project.hasProperty('junitVersion') ? rootProject.ext.junitVersion : '4.13.2'
+    androidxAppCompatVersion = project.hasProperty('androidxAppCompatVersion') ? rootProject.ext.androidxAppCompatVersion : '1.7.1'
+    androidxCoreVersion = project.hasProperty('androidxCoreVersion') ? rootProject.ext.androidxCoreVersion : '1.17.0'
+    walkieTalkieNearby = (findProperty('walkieTalkieNearby') ?: 'false').toString().toBoolean()
+}
+
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.13.0'
+    }
+}
+
+apply plugin: 'com.android.library'
+
+android {
+    namespace = "org.hangel.walkietalkie"
+    compileSdk = project.hasProperty('compileSdkVersion') ? rootProject.ext.compileSdkVersion : 36
+    defaultConfig {
+        minSdkVersion project.hasProperty('minSdkVersion') ? rootProject.ext.minSdkVersion : 24
+        targetSdkVersion project.hasProperty('targetSdkVersion') ? rootProject.ext.targetSdkVersion : 36
+        versionCode 1
+        versionName "0.1.0"
+    }
+    sourceSets {
+        main {
+            java.srcDirs += (walkieTalkieNearby ? 'src/nearby/java' : 'src/nonearby/java')
+            if (walkieTalkieNearby) manifest.srcFile 'src/nearby/AndroidManifest.xml'
+        }
+    }
+    lintOptions {
+        abortOnError = false
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_21
+        targetCompatibility JavaVersion.VERSION_21
+    }
+}
+
+repositories {
+    google()
+    mavenCentral()
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    if (System.getenv("CAP_PLUGIN_PUBLISH") == "true") {
+        implementation "com.capacitorjs:core:$capacitorVersion"
+    } else {
+        implementation project(':capacitor-android')
+    }
+    implementation "androidx.appcompat:appcompat:$androidxAppCompatVersion"
+    implementation "androidx.core:core:$androidxCoreVersion"
+    if (walkieTalkieNearby) {
+        // Proprietary (Android Software Development Kit License). Optional; see README "Dependencies & licenses".
+        implementation "com.google.android.gms:play-services-nearby:19.3.0"
+    }
+    testImplementation "junit:junit:$junitVersion"
+}

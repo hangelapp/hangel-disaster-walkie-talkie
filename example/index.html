@@ -1,0 +1,20 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: Apache-2.0 -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Walkie-talkie example</title>
+  </head>
+  <body>
+    <p role="alert"><strong>In an emergency call 112</strong> (or your local emergency number). This tool does not replace official channels.</p>
+    <p id="status" aria-live="polite"></p>
+    <button id="ptt" type="button" aria-label="Hold to talk">Hold to talk</button>
+    <input id="text" maxlength="280" aria-label="Short message" />
+    <button id="send" type="button">Send</button>
+    <button id="safe" type="button">I am safe</button>
+    <button id="help" type="button">I need help</button>
+    <ul id="messages"></ul>
+    <script type="module" src="./main.ts"></script>
+  </body>
+</html>

@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.build/
+.swiftpm/
+build/
+DerivedData/
+*.xcuserstate
+xcuserdata/
+.gradle/
+local.properties
+.DS_Store
+*.log
+Package.resolved
