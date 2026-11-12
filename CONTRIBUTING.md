@@ -33,5 +33,10 @@ currently has no Android SDK, so **Android build reports and fixes are especiall
 3. Describe what you tested on real devices, if anything.
 4. By submitting, you agree that your contribution is licensed under Apache-2.0 (see LICENSE, section 5).
 
-Good first contributions: Android implementation of mesh v3 (help calls, presence, invitations), an Android foreground service for
-background relaying, English translations of internal identifiers/comments, more languages in the native fallback screens.
+## Roadmap (help wanted)
+
+- Android: mesh v3 (help calls, presence, invitations) so these messages also cross Android phones.
+- Android: a foreground service for reliable background relaying.
+- Local "mute / ignore sender" and block controls for end users (offline, per device).
+- Verified Android build in CI (a minimal Capacitor host project) and real-device iPhone ↔ Android field tests.
+- English translations of internal identifiers/comments; more languages in the native fallback screens.
