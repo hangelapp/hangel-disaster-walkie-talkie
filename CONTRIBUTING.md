@@ -10,12 +10,17 @@ Thank you for helping! Issues and pull requests are welcome in English or Turkis
 * The wire protocol is shared by iOS, Android and the TypeScript reference (`src/protocol/`). A change to it must update all three,
   the tests and [docs/protocol.md](docs/protocol.md). Keep the interoperability identifiers unless the change is discussed first.
 * No telemetry, analytics or network calls in the plugin. Data stays on devices unless the host app implements `RelayAdapter`.
+* **Tests are required.** Every new feature or functionality, and every bug fix, must come with automated tests in the same pull
+  request: Vitest in `test/` for TypeScript, JUnit in `android/src/test/` for Java, `scripts/cross-verify/` for Swift wire code.
+  Where an automated test is not possible (radio hardware, OS permission prompts), explain why in the PR and describe the
+  manual test instead.
 
 ## Development
 
 ```bash
 npm install
 npm run typecheck     # TypeScript
+npm run lint          # ESLint (typescript-eslint); CI also runs CodeQL
 npm test              # protocol tests (Vitest)
 npm run verify:ios    # Swift package build for the iOS Simulator (macOS + Xcode)
 npm run verify:cross  # Swift ↔ TypeScript wire compatibility (macOS)
@@ -29,7 +34,7 @@ currently has no Android SDK, so **Android build reports and fixes are especiall
 ## Pull requests
 
 1. Fork, create a branch, keep the change focused.
-2. Add or update tests for protocol changes.
+2. Add or update automated tests (see *Tests are required* above); `npm run typecheck`, `npm run lint` and `npm test` must pass.
 3. Describe what you tested on real devices, if anything.
 4. By submitting, you agree that your contribution is licensed under Apache-2.0 (see LICENSE, section 5).
 

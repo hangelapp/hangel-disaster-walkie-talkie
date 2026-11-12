@@ -8,6 +8,7 @@ versioning: [SemVer](https://semver.org/).
 ### Added
 - Static analysis: ESLint with `typescript-eslint` (`npm run lint`, run in CI) and a GitHub CodeQL workflow for JavaScript/TypeScript
   (push, pull request, weekly).
+- CONTRIBUTING: explicit policy that every new feature and bug fix must come with automated tests.
 
 ### Security
 - Dev/test tooling upgraded to releases without known vulnerabilities: Vitest 2.1.8 → 4.1.12 (fixes CVE-2025-24964 and the
