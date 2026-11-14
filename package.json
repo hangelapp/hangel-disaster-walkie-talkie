@@ -47,6 +47,7 @@
     "prepare": "tsc -p tsconfig.json",
     "build": "tsc -p tsconfig.json",
     "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.test.json --noEmit",
+    "lint": "eslint . --max-warnings 0",
     "test": "vitest run",
     "verify:ios": "xcodebuild -scheme HangelDisasterWalkieTalkie -destination 'generic/platform=iOS Simulator' build",
     "verify:cross": "bash scripts/cross-verify/capraz-dogrula.sh"
@@ -56,9 +57,15 @@
   },
   "devDependencies": {
     "@capacitor/core": "8.3.0",
+    "@eslint/js": "10.0.1",
     "@types/node": "22.10.2",
-    "tsx": "4.19.2",
+    "eslint": "10.14.0",
+    "tsx": "4.23.15",
     "typescript": "5.7.2",
-    "vitest": "2.1.8"
+    "typescript-eslint": "8.72.1",
+    "vitest": "4.1.12"
+  },
+  "overrides": {
+    "minimatch": "11.0.3"
   }
 }

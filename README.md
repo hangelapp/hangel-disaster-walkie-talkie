@@ -182,7 +182,7 @@ data (uninstalling the app removes it).
 | `androidx.appcompat:appcompat`, `androidx.core:core` | Android UI and compat | Apache-2.0 |
 | Apple system frameworks (MultipeerConnectivity, CoreBluetooth, CryptoKit, AVFoundation, CoreLocation, WiFiAware…) | iOS | Part of iOS (Apple SDK terms) |
 | `com.google.android.gms:play-services-nearby` *(optional, off by default)* | Android ↔ Android Wi-Fi transport | **Proprietary** (Android Software Development Kit License). Not needed for the default build. |
-| Dev only: `typescript` (Apache-2.0), `vitest` (MIT), `tsx` (MIT), `@types/node` (MIT), `junit` 4 (EPL-1.0, tests only) | build/test | — |
+| Dev only: `typescript` (Apache-2.0), `vitest` (MIT), `tsx` (MIT), `@types/node` (MIT), `eslint` + `typescript-eslint` (MIT), `junit` 4 (EPL-1.0, tests only) | build/test/lint | — |
 
 All mandatory runtime dependencies are under permissive licences compatible with Apache-2.0. The only proprietary component is
 optional; the default build is independent of it (DPG "platform independence").
